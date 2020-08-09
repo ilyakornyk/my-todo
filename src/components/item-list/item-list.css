@@ -1,0 +1,27 @@
+span {
+    font-size: 18px;
+}
+
+span.important {
+    color: blue;
+}
+
+span.done {
+    text-decoration: line-through;
+}
+
+span:hover,
+span:focus {
+    cursor: pointer;
+}
+
+button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+i {
+    margin-top: 5px;
+    font-size: 20px !important;
+}
