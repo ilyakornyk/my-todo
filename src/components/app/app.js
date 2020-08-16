@@ -10,6 +10,8 @@ import CountItems from "../count-items";
 import Spinner from "../spinner";
 import ColorMode from "../color-mode";
 import { DragDropContext } from "react-beautiful-dnd";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+
 import "./app.css";
 
 const App = () => {
@@ -300,6 +302,9 @@ const App = () => {
     visibleItems = searchItems(filterItems(items, filter), search);
   });
 
+  // const userNow = firebase.auth().currentUser;
+  // console.log(userNow, "userNow");
+
   const allItems = !!items ? items.length : 0;
   const doneItems = !!items ? items.filter((item) => item["done"]).length : 0;
 
@@ -338,6 +343,13 @@ const App = () => {
         )}
       </DragDropContext>
     </div>
+    // <Router>
+    //   {userNow !== null ? (
+    //     <Route path="/login" component={<h1>you are login</h1>} />
+    //   ) : (
+    //     <Route path="/logout" component={<h1>you are log out</h1>} />
+    //   )}
+    // </Router>
   );
 };
 

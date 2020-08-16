@@ -8,28 +8,57 @@ const RenderPage = () => {
   let currentUser;
 
   useEffect(() => {
-    firebase.auth().onAuthStateChanged(function (user) {
-      if (user) {
-        console.log(user);
-        currentUser = user;
-      } else {
-        currentUser = false;
-        console.log(user);
-      }
-    });
+    // const getUser = async () => {
+    //   currentUser = await firebase.auth().onAuthStateChanged(function (user) {
+    //     if (user) {
+    //       console.log(user);
+    //       console.log("commit");
+    //       currentUser = user;
+    //     } else {
+    //       currentUser = false;
+    //       console.log(user);
+    //     }
+    //   });
+    // };
+
+    (async () => {
+      await firebase.auth().onAuthStateChanged(function (user) {
+        if (user) {
+          currentUser = user;
+          console.log(currentUser);
+        } else {
+          currentUser = false;
+          console.log(currentUser);
+        }
+      });
+    })();
   }, []);
 
   const appPage = () => <App />;
   const logPage = () => <Authen />;
 
   return (
-    <Router>
-      {currentUser ? (
-        <Route path="/" component={appPage} />
+    <React.Fragment>
+      {(async () => {
+        await currentUser;
+        console.log(currentUser);
+        return currentUser;
+      })() ? (
+        <p>true</p>
       ) : (
-        <Route path="/" component={logPage} />
+        <p>false </p>
       )}
-    </Router>
+    </React.Fragment>
+
+    // <h1>{currentUser}</h1>
+
+    // <Router>
+    //   {currentUser ? (
+    //     <Route path="/" component={appPage} />
+    //   ) : (
+    //     <Route path="/" component={logPage} />
+    //   )}
+    // </Router>
   );
 };
 
