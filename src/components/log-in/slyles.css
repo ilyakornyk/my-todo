@@ -1,0 +1,9 @@
+button#google i,
+button#signOut i {
+  font-size: 2.5rem !important;
+  color: #db4437;
+}
+
+button#signOut i {
+  color: #4285f4;
+}

@@ -1,7 +1,15 @@
-import React from "react";
-import ReactDOM from "react-dom";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
 
-import App from "./components/app";
-import RenderPage from "./components/pages/render-page";
+import Application from './app';
+import UserProvider from "./context/userProvider";
 
-ReactDOM.render(<App />, document.getElementById("root"));
+const App = () => (
+    <UserProvider >
+        <Application />
+    </UserProvider>
+
+)
+
+ReactDOM.render(< App />, document.getElementById('root'));
